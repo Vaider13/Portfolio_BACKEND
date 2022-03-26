@@ -15,6 +15,7 @@ public interface EducacionMapper {
     
     default EducacionDto map (Educacion edu) {
       EducacionDto eduDto = new EducacionDto();
+      eduDto.setId(edu.getId());
       eduDto.setTitulo(edu.getTitulo());
       eduDto.setNombreInstitucion(edu.getNombreInstitucion());
       eduDto.setFechaInicio(edu.getFechaInicio());

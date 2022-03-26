@@ -9,6 +9,7 @@ import lombok.Setter;
 @Data
 public class EducacionDto {
 
+    private Integer id;
     private String nombreInstitucion;
     private String titulo;
     private String fechaInicio;
