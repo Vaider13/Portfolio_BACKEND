@@ -46,6 +46,9 @@ public class Persona {
     @JsonIgnore
     @OneToMany(mappedBy = "persona", cascade=CascadeType.ALL)
     private List<Educacion> educaciones;
+    @JsonIgnore
+    @OneToMany(mappedBy = "persona", cascade=CascadeType.ALL)
+    private List<ExperienciaLaboral> experienciaLaboral;
 
     public Persona() {
     }

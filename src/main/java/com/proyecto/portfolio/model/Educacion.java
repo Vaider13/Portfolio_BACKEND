@@ -1,9 +1,11 @@
 package com.proyecto.portfolio.model;
 
 
+import javax.persistence.CascadeType;
 import javax.validation.constraints.NotNull;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,13 +31,13 @@ public class Educacion {
     private String fechaInicio;
     private String fechaFinal;
     private String logoEducacion;
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.MERGE )
     @JoinColumn(name = "persona_id", referencedColumnName = "id")
     private Persona persona;
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.MERGE )
     @JoinColumn(name = "grado_id", referencedColumnName = "id")
     private GradoEducacion gradoEducacion;
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.MERGE )
     @JoinColumn(name = "estado_id", referencedColumnName = "id")
     private EstadoEducacion estadoEducacion;
 

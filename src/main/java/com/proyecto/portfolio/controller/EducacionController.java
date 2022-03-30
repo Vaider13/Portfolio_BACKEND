@@ -49,6 +49,12 @@ public class EducacionController {
         List<Educacion> list = iEduService.getEducacion();
         return new ResponseEntity(eduMapper.map(list), HttpStatus.OK);
     }
+    
+    @GetMapping("/traerid/{id}")
+    public ResponseEntity<Educacion>getEducacionById(@PathVariable(name = "id") Integer id) {
+        Educacion edu = iEduService.findEducacion(id);
+        return new ResponseEntity(eduMapper.map(edu), HttpStatus.OK);
+    }
 
     @GetMapping("/traer/{personaId}")
     public List<EducacionDto> getEducacionByPersonaId(@PathVariable(name = "personaId") Integer personaId) {
