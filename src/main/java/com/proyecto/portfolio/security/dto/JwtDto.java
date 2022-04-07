@@ -8,12 +8,14 @@ import lombok.Setter;
 public class JwtDto {
 
     private String token;
-
+    
+    
     public JwtDto() {
     }
 
     public JwtDto(String token) {
         this.token = token;
+
     }
 
 }

@@ -30,8 +30,7 @@ public class EducacionService implements IEducacionService{
 
     @Override
     public Educacion findEducacion(Integer id) {
-         Educacion edu = eduRepo.findById(id).get();
-         return edu;
+         return eduRepo.findById(id).get();
     }
 
     @Override

@@ -21,6 +21,7 @@ public class UsuarioService {
     public Optional<Usuario> getByNombreUsuario(String nombreUsuario) {
         return usuarioRepo.findByNombreUsuario(nombreUsuario);
     }
+    
 
     public Boolean existsByNombreUsuario(String nombreUsuario) {
         return usuarioRepo.existsByNombreUsuario(nombreUsuario);

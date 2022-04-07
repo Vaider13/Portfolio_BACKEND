@@ -15,8 +15,7 @@ public class LocalidadService implements ILocalidadService {
     
     @Override
     public List<Localidad> getLocalidad() {
-        List<Localidad> listaLocalidades = localRepo.findAll();
-        return listaLocalidades;
+        return localRepo.findAll();
     }
 
     @Override
@@ -31,8 +30,12 @@ public class LocalidadService implements ILocalidadService {
 
     @Override
     public Localidad findLocalidad(Integer id) {
-        Localidad localidad = localRepo.getById(id);
-        return localidad;
+       return localRepo.getById(id);
+    }
+
+    @Override
+    public Localidad findByName(String localidad) {
+        return localRepo.findByLocalidad(localidad);
     }
     
 }

@@ -14,4 +14,6 @@ public interface IPersonaService {
     public void deletePersona(Integer id);
     
     public Persona findPersona(Integer id);
+    
+    public Persona findPersonaByUserId(Integer usuario_id);
 }

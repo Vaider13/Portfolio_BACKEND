@@ -44,16 +44,17 @@ public class Persona {
     @JoinColumn(name = "localidad_id")
     private Localidad localidad;
     @JsonIgnore
-    @OneToMany(mappedBy = "persona", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy = "persona", cascade=CascadeType.MERGE)
     private List<Educacion> educaciones;
     @JsonIgnore
-    @OneToMany(mappedBy = "persona", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy = "persona", cascade=CascadeType.MERGE)
     private List<ExperienciaLaboral> experienciaLaboral;
 
     public Persona() {
     }
 
-    public Persona(String nombre, String apellido, String fecha_nacimiento, String telefono, String titulo, String acerca_de, Usuario usuario, Localidad localidad, List<Educacion> educaciones) {
+    public Persona(Integer id, String nombre, String apellido, String fecha_nacimiento, String telefono, String titulo, String acerca_de, Usuario usuario, Localidad localidad) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.fecha_nacimiento = fecha_nacimiento;
@@ -62,8 +63,8 @@ public class Persona {
         this.acerca_de = acerca_de;
         this.usuario = usuario;
         this.localidad = localidad;
-        this.educaciones = educaciones;
     }
-    
+
+       
 
 }

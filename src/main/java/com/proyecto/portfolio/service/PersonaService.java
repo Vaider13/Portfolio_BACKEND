@@ -14,8 +14,7 @@ public class PersonaService implements IPersonaService  {
     
     @Override
     public List<Persona> getPersonas() {
-        List <Persona> listasPersonas = persorepo.findAll();
-        return listasPersonas;
+        return persorepo.findAll();
     }
 
     @Override
@@ -30,8 +29,12 @@ public class PersonaService implements IPersonaService  {
 
     @Override
     public Persona findPersona(Integer id) {
-        Persona perso = persorepo.findById(id).get();
-        return perso;
+        return persorepo.findById(id).get();
+    }
+
+    @Override
+    public Persona findPersonaByUserId(Integer usuario_id) {
+        return persorepo.findPersonaByUsuarioId(usuario_id);
     }
     
 }

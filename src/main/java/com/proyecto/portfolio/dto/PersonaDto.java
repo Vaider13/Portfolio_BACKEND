@@ -1,11 +1,12 @@
 package com.proyecto.portfolio.dto;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-
+@Data
 public class PersonaDto {
 
     private Integer id;
@@ -15,6 +16,6 @@ public class PersonaDto {
     private String telefono;
     private String titulo;
     private String acerca_de;
-    private Integer localidad_id;
-    private Integer usuario_id;
+    private String localidad;
+    private String provincia;
 }

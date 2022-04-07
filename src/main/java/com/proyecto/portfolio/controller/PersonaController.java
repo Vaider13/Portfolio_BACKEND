@@ -1,6 +1,7 @@
 package com.proyecto.portfolio.controller;
 
 import com.proyecto.portfolio.dto.PersonaDto;
+import com.proyecto.portfolio.mapper.PersonaMapper;
 import com.proyecto.portfolio.model.Localidad;
 import com.proyecto.portfolio.model.Persona;
 import com.proyecto.portfolio.security.model.Usuario;
@@ -9,17 +10,21 @@ import com.proyecto.portfolio.service.ILocalidadService;
 import com.proyecto.portfolio.service.IPersonaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/persona")
+@CrossOrigin(origins = "*")
 public class PersonaController {
 
     @Autowired
@@ -29,26 +34,36 @@ public class PersonaController {
     private ILocalidadService localService;
 
     @Autowired
+    private PersonaMapper persoMapper;
+
+    @Autowired
     UsuarioService userService;
 
-    @GetMapping("persona/traer")
-    public List<Persona> getPersonas() {
-        return interPerso.getPersonas();
+    @GetMapping("/traer")
+    public ResponseEntity<List<Persona>> getPersonas() {
+        List<Persona> perso = interPerso.getPersonas();
+        return new ResponseEntity(persoMapper.map(perso), HttpStatus.OK);
 
     }
 
-    @GetMapping("persona/traer/{id}")
-    public Persona getPersonaById(@PathVariable(name = "id") Integer id) {
-        return interPerso.findPersona(id);
+    @GetMapping("/traer/{id}")
+    public ResponseEntity<Persona> getPersonaById(@PathVariable(name = "id") Integer id) {
+        Persona perso = interPerso.findPersona(id);
+        return new ResponseEntity(persoMapper.map(perso), HttpStatus.OK);
+    }
+    
+    @GetMapping("/traer/usuario/{id}")
+    public ResponseEntity<Persona> getByUserId(@PathVariable(name = "id") Integer id) {
+        Persona perso = interPerso.findPersonaByUserId(id);
+        return new ResponseEntity(persoMapper.map(perso), HttpStatus.OK);
     }
 
-    @PostMapping("persona/{usuario_id}/crear/{localidad_id}")
-    public void crearPersona(@PathVariable(value = "localidad_id") Integer localidad_id,
-            @PathVariable(value = "usuario_id") Integer usuario_id,
+    @PostMapping("/crear/{userId}")
+    public void crearPersona(@PathVariable(name = "userId") Integer userId,
             @RequestBody PersonaDto personaDto) {
         Persona persona = new Persona();
-        Localidad localidad = localService.findLocalidad(localidad_id);
-        Usuario user = userService.getById(usuario_id);
+        Localidad localidad = localService.findByName(personaDto.getLocalidad());
+        Usuario user = userService.getById(userId);
         persona.setNombre(personaDto.getNombre());
         persona.setApellido(personaDto.getApellido());
         persona.setFecha_nacimiento(personaDto.getFecha_nacimiento());
@@ -60,29 +75,22 @@ public class PersonaController {
         interPerso.savePersona(persona);
     }
 
-   
-    @DeleteMapping("persona/borrar/{id}")
+    @DeleteMapping("/borrar/{id}")
     public void borrarPersona(@PathVariable Integer id) {
         interPerso.deletePersona(id);
     }
 
-    @PutMapping("persona/editar/{id}")
+    @PutMapping("/editar/{id}")
     public Persona editPersona(@PathVariable Integer id,
-            @RequestParam("nombre") String nuevoNombre,
-            @RequestParam("apellido") String nuevoApellido,
-            @RequestParam("fecha_nacimiento") String nuevaFechaNacimiento,
-            @RequestParam("telefono") String nuevoTelefono,
-            @RequestParam("titulo") String nuevoTitulo,
-            @RequestParam("acerca_de") String nuevoAcercaDe,
-            @RequestParam ("localidad_id") Integer localidad_id) {
+             @RequestBody PersonaDto personaDto){
         Persona perso = interPerso.findPersona(id);
-        perso.setApellido(nuevoApellido);
-        perso.setNombre(nuevoNombre);
-        perso.setFecha_nacimiento(nuevaFechaNacimiento);
-        perso.setTelefono(nuevoTelefono);
-        perso.setTitulo(nuevoTitulo);
-        perso.setAcerca_de(nuevoAcercaDe);
-        perso.setLocalidad(localService.findLocalidad(localidad_id));
+        perso.setApellido(personaDto.getApellido());
+        perso.setNombre(personaDto.getNombre());
+        perso.setFecha_nacimiento(personaDto.getFecha_nacimiento());
+        perso.setTelefono(personaDto.getTelefono());
+        perso.setTitulo(personaDto.getTitulo());
+        perso.setAcerca_de(personaDto.getAcerca_de());
+        perso.setLocalidad(localService.findByName(personaDto.getLocalidad()));
         interPerso.savePersona(perso);
         return perso;
     }

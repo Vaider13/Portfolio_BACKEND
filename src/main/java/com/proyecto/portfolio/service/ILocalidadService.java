@@ -13,4 +13,6 @@ public interface ILocalidadService {
     public void deleteLocalidad(Integer id);
     
     public Localidad findLocalidad(Integer id);
+    
+    public Localidad findByName(String localidad);
 }
