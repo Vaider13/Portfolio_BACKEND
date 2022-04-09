@@ -1,12 +1,13 @@
 package com.proyecto.portfolio.repository;
 
-import com.proyecto.portfolio.model.Educacion;
+import com.proyecto.portfolio.model.Proyecto;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface EducacionRepository extends JpaRepository<Educacion, Integer> {
+public interface ProyectoRepository extends JpaRepository<Proyecto, Integer> {
 
-    List<Educacion> findByPersonaId(Integer personaId);
+    List<Proyecto> findByPersonaId(Integer personaId);
+
 }

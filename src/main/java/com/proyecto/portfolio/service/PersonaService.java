@@ -1,4 +1,3 @@
-
 package com.proyecto.portfolio.service;
 
 import com.proyecto.portfolio.model.Persona;
@@ -8,10 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PersonaService implements IPersonaService  {
+public class PersonaService implements IPersonaService {
+
     @Autowired
     private PersonaRepository persorepo;
-    
+
     @Override
     public List<Persona> getPersonas() {
         return persorepo.findAll();
@@ -36,5 +36,5 @@ public class PersonaService implements IPersonaService  {
     public Persona findPersonaByUserId(Integer usuario_id) {
         return persorepo.findPersonaByUsuarioId(usuario_id);
     }
-    
+
 }

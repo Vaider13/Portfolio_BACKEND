@@ -15,7 +15,6 @@ public class JwtDto {
 
     public JwtDto(String token) {
         this.token = token;
-
     }
 
 }

@@ -37,18 +37,23 @@ public class Persona {
     private String titulo;
     @NotNull
     private String acerca_de;
-    @OneToOne(cascade=CascadeType.MERGE , fetch = FetchType.EAGER)
+    private String urlAvatar;
+    private String urlBanner;
+    @OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
-    @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.MERGE )
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "localidad_id")
     private Localidad localidad;
     @JsonIgnore
-    @OneToMany(mappedBy = "persona", cascade=CascadeType.MERGE)
+    @OneToMany(mappedBy = "persona", cascade = CascadeType.MERGE)
     private List<Educacion> educaciones;
     @JsonIgnore
-    @OneToMany(mappedBy = "persona", cascade=CascadeType.MERGE)
+    @OneToMany(mappedBy = "persona", cascade = CascadeType.MERGE)
     private List<ExperienciaLaboral> experienciaLaboral;
+    @JsonIgnore
+    @OneToMany(mappedBy = "persona", cascade = CascadeType.MERGE)
+    private List<Proyecto> proyecto;
 
     public Persona() {
     }
@@ -64,7 +69,5 @@ public class Persona {
         this.usuario = usuario;
         this.localidad = localidad;
     }
-
-       
 
 }

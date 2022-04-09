@@ -70,6 +70,8 @@ public class PersonaController {
         persona.setTelefono(personaDto.getTelefono());
         persona.setTitulo(personaDto.getTitulo());
         persona.setAcerca_de(personaDto.getAcerca_de());
+        persona.setUrlAvatar(personaDto.getUrlAvatar());
+        persona.setUrlBanner(personaDto.getUrlBanner());
         persona.setLocalidad(localidad);
         persona.setUsuario(user);
         interPerso.savePersona(persona);
@@ -90,6 +92,8 @@ public class PersonaController {
         perso.setTelefono(personaDto.getTelefono());
         perso.setTitulo(personaDto.getTitulo());
         perso.setAcerca_de(personaDto.getAcerca_de());
+        perso.setUrlAvatar(personaDto.getUrlAvatar());
+        perso.setUrlBanner(personaDto.getUrlBanner());
         perso.setLocalidad(localService.findByName(personaDto.getLocalidad()));
         interPerso.savePersona(perso);
         return perso;
