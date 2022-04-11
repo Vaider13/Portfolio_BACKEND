@@ -54,6 +54,9 @@ public class Persona {
     @JsonIgnore
     @OneToMany(mappedBy = "persona", cascade = CascadeType.MERGE)
     private List<Proyecto> proyecto;
+    @JsonIgnore
+    @OneToMany(mappedBy = "persona", cascade = CascadeType.MERGE)
+    private List<Skill> skill;
 
     public Persona() {
     }
