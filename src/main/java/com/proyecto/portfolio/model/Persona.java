@@ -57,11 +57,14 @@ public class Persona {
     @JsonIgnore
     @OneToMany(mappedBy = "persona", cascade = CascadeType.MERGE)
     private List<Skill> skill;
+    @JsonIgnore
+    @OneToOne(mappedBy = "persona", cascade = CascadeType.MERGE)
+    private RedSocial redes;
 
     public Persona() {
     }
 
-    public Persona(Integer id, String nombre, String apellido, String fecha_nacimiento, String telefono, String titulo, String acerca_de, Usuario usuario, Localidad localidad) {
+    public Persona(Integer id, String nombre, String apellido, String fecha_nacimiento, String telefono, String titulo, String acerca_de, String urlAvatar, String urlBanner, Usuario usuario, Localidad localidad) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -69,6 +72,8 @@ public class Persona {
         this.telefono = telefono;
         this.titulo = titulo;
         this.acerca_de = acerca_de;
+        this.urlAvatar = urlAvatar;
+        this.urlBanner = urlBanner;
         this.usuario = usuario;
         this.localidad = localidad;
     }

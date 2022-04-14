@@ -37,5 +37,10 @@ public class LocalidadService implements ILocalidadService {
     public Localidad findByName(String localidad) {
         return localRepo.findByLocalidad(localidad);
     }
+
+    @Override
+    public List<Localidad> findByProvinciaId(Integer provinciaId) {
+       return localRepo.findByProvinciaId(provinciaId);
+    }
     
 }

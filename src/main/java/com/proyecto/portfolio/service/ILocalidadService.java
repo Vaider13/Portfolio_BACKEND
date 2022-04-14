@@ -15,4 +15,6 @@ public interface ILocalidadService {
     public Localidad findLocalidad(Integer id);
     
     public Localidad findByName(String localidad);
+    
+    public List<Localidad> findByProvinciaId(Integer provinciaId);
 }

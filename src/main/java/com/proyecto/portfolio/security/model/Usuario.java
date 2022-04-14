@@ -41,7 +41,7 @@ public class Usuario {
             inverseJoinColumns = @JoinColumn(name = "rol_id"))
     private Set<Rol> roles = new HashSet<>();
     @JsonIgnore
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Persona persona;
     
     

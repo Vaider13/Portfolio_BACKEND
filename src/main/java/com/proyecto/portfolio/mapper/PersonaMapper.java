@@ -18,7 +18,7 @@ public interface PersonaMapper {
         persoDto.setApellido(perso.getApellido());
         persoDto.setFecha_nacimiento(perso.getFecha_nacimiento());
         persoDto.setTitulo(perso.getTitulo());
-        persoDto.setTelefono(perso.getTitulo());
+        persoDto.setTelefono(perso.getTelefono());
         persoDto.setAcerca_de(perso.getAcerca_de());
         persoDto.setUrlAvatar(perso.getUrlAvatar());
         persoDto.setUrlBanner(perso.getUrlBanner());

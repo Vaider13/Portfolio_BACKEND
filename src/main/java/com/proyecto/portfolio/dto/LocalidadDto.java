@@ -1,21 +1,14 @@
 
 package com.proyecto.portfolio.dto;
 
-import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 public class LocalidadDto {
     private Integer id;
-    private String localidad;
-    private ProvinciaDto provinciaDto;
-    
-    
-    
-    
+    private String localidad;       
 }
