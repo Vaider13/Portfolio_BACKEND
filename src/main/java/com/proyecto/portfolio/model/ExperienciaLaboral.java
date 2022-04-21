@@ -27,6 +27,7 @@ public class ExperienciaLaboral {
     @NotNull
     private String fechaInicio;
     private String fechaFinal;
+    private Boolean enCurso;
     @NotNull
     private String descripcion;
     private String logoEmpresa;

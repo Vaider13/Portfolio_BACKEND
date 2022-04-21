@@ -18,6 +18,7 @@ public interface ExperienciaLaboralMapper {
         expDto.setPuesto(exp.getPuesto());
         expDto.setFechaInicio(exp.getFechaInicio());
         expDto.setFechaFinal(exp.getFechaFinal());
+        expDto.setEnCurso(exp.getEnCurso());
         expDto.setDescripcion(exp.getDescripcion());
         expDto.setLogoEmpresa(exp.getLogoEmpresa());
         return expDto;

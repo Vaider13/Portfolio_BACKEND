@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/grado")
+@RequestMapping("grado")
 @CrossOrigin(origins = "*")
 public class GradoEducacionController {
 

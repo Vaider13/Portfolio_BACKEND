@@ -16,8 +16,10 @@ public class PersonaDto {
     private String telefono;
     private String titulo;
     private String acerca_de;
+    private String email;
     private String urlAvatar;
     private String urlBanner;
     private String localidad;
     private String provincia;
+    private Integer provinciaId;
 }

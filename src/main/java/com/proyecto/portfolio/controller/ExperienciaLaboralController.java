@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/trabajo")
+@RequestMapping("trabajo")
 @CrossOrigin(origins = "*")
 public class ExperienciaLaboralController {
 
@@ -62,6 +62,7 @@ public class ExperienciaLaboralController {
         exp.setPuesto(expDto.getPuesto());
         exp.setFechaInicio(expDto.getFechaInicio());
         exp.setFechaFinal(expDto.getFechaFinal());
+        exp.setEnCurso(expDto.getEnCurso());
         exp.setDescripcion(expDto.getDescripcion());
         exp.setLogoEmpresa(expDto.getLogoEmpresa());
         iExpService.saveExperienciaLaboral(exp);
@@ -80,6 +81,7 @@ public class ExperienciaLaboralController {
         exp.setPuesto(expDto.getPuesto());
         exp.setFechaInicio(expDto.getFechaInicio());
         exp.setFechaFinal(expDto.getFechaFinal());
+        exp.setEnCurso(expDto.getEnCurso());
         exp.setDescripcion(expDto.getDescripcion());
         exp.setLogoEmpresa(expDto.getLogoEmpresa());
         iExpService.saveExperienciaLaboral(exp);

@@ -14,6 +14,7 @@ public class ExperienciaLaboralDto {
     private String puesto;
     private String fechaInicio;
     private String fechaFinal;
+    private Boolean enCurso;
     private String descripcion;
     private String logoEmpresa;
 }

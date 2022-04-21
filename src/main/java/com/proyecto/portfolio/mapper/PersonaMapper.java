@@ -20,10 +20,12 @@ public interface PersonaMapper {
         persoDto.setTitulo(perso.getTitulo());
         persoDto.setTelefono(perso.getTelefono());
         persoDto.setAcerca_de(perso.getAcerca_de());
+        persoDto.setEmail(perso.getUsuario().getEmail());
         persoDto.setUrlAvatar(perso.getUrlAvatar());
         persoDto.setUrlBanner(perso.getUrlBanner());
         persoDto.setLocalidad(perso.getLocalidad().getLocalidad());
         persoDto.setProvincia(perso.getLocalidad().getProvincia().getProvincia());
+        persoDto.setProvinciaId(perso.getLocalidad().getProvincia().getId());
 
         return persoDto;
     }

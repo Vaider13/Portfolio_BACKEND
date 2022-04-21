@@ -3,7 +3,6 @@ package com.proyecto.portfolio.mapper;
 import com.proyecto.portfolio.dto.UsuarioDto;
 import com.proyecto.portfolio.security.model.Usuario;
 import java.util.List;
-import java.util.Optional;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 
