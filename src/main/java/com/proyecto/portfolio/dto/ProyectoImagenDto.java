@@ -5,11 +5,10 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+@Data
 @Getter
 @Setter
-@Data
-public class LocalidadDto {
+public class ProyectoImagenDto {
     private Integer id;
-    private String localidad;
-    private String provincia;
+    private String imagenUrl;
 }
