@@ -20,6 +20,8 @@ public class EstadoEducacionController {
     @Autowired
     IEstadoEducacion iEstadoService;
     
+    //Trae todos los estados que posee un estudio (Graduado, Abandonado, En Curso) 
+    //que se usaran en el correspondiente formulario
     @GetMapping("/traer")
     public ResponseEntity<List<EstadoEducacion>>getEstadoEducacion() {
         List<EstadoEducacion> list = iEstadoService.getEstadoEducacion();

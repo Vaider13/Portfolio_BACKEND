@@ -7,5 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProvinciaRepository extends JpaRepository<Provincia, Integer> {
+    
+    //Busca a una provincia por medio de su nombre.
     Provincia findByProvincia(String Provincia);
 }

@@ -33,24 +33,29 @@ public class SkillController {
     @Autowired
     SkillMapper SkillMapper;
 
+    //Trae todas las habilidades almacenadas.
     @GetMapping("/traer")
     public ResponseEntity<List<Skill>> getSkill() {
         List<Skill> list = skillService.getSkills();
         return new ResponseEntity(SkillMapper.map(list), HttpStatus.OK);
     }
-
+    
+    //Trae todas las habilidades pertenecientes a una persona por medio de us ID.
     @GetMapping("/traer/{personaId}")
     public ResponseEntity<List<Skill>> getSkillByPersonaId(@PathVariable(value = "personaId") Integer personaId) {
         List<Skill> list = skillService.getByPersonaId(personaId);
         return new ResponseEntity(SkillMapper.map(list), HttpStatus.OK);
     }
 
+    //Trae una sola habilidad por medio de su ID.
     @GetMapping("/traerid/{id}")
     public ResponseEntity<Skill> getSkillById(@PathVariable(value = "id") Integer id) {
         Skill skill = skillService.findSkill(id);
         return new ResponseEntity(SkillMapper.map(skill), HttpStatus.OK);
     }
 
+    //Crea una nueva habilidad, para ello se usa el ID de la parsona para identificar a que persona corresponde.
+    //Se crea un nuevo objeto, se le asignan los valores, que vienen en el cuerpo de la solicitud, y posteriormente se guarda.    
     @PostMapping("/crear/{personaId}")
     public void saveSkill(@PathVariable(value = "personaId") Integer personaId,
             @RequestBody SkillDto skillDto) {
@@ -62,11 +67,14 @@ public class SkillController {
         skillService.saveSkill(skill);
     }
 
+    //Se borra una habilidad por medio de su ID.
     @DeleteMapping("/borrar/{id}")
     public void deleteSkill(@PathVariable(value = "id") Integer id) {
         skillService.deleteSkill(id);
     }
 
+    //Se edita una habilidad por medio de su ID. Se trae la habilidad por medio de su ID.
+    //Luego se le asignan los nuevos valores, que vienen en el cuerpo de la solicitud, y posteriormente se guarda.
     @PutMapping("editar/{id}")
     public Skill editSkill(@PathVariable(value = "id") Integer id,
             @RequestBody SkillDto skillDto) {

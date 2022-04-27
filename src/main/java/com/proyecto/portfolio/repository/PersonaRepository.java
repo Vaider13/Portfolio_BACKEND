@@ -8,5 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PersonaRepository extends JpaRepository <Persona, Integer>{
+    
+    //Busca a la persona asociada a un suaurio por medio del ID del mismo.
     Persona findPersonaByUsuarioId(Integer usuario_id);
 }

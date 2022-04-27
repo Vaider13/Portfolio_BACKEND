@@ -39,24 +39,31 @@ public class Persona {
     private String acerca_de;
     private String urlAvatar;
     private String urlBanner;
+    //Relacion uno a uno entre la clase "Usuario" y "Persona"
     @OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
+    //Relacion muchos a uno entre la clase "Localidad" y "Persona"
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "localidad_id")
     private Localidad localidad;
+    //Relacion uno a muchos entre la clase "Persona" y "Educacion".
     @JsonIgnore
     @OneToMany(mappedBy = "persona", cascade = CascadeType.MERGE)
     private List<Educacion> educaciones;
+    //Relacion uno a muchos entre la clase "Persona" y "Experiencia Laboral".
     @JsonIgnore
     @OneToMany(mappedBy = "persona", cascade = CascadeType.MERGE)
     private List<ExperienciaLaboral> experienciaLaboral;
+    //Relacion uno a muchos entre la clase "Persona" y "Proyecto".
     @JsonIgnore
     @OneToMany(mappedBy = "persona", cascade = CascadeType.MERGE)
     private List<Proyecto> proyecto;
+    //Relacion uno a muchos entre la clase "Persona" y "Skill".
     @JsonIgnore
     @OneToMany(mappedBy = "persona", cascade = CascadeType.MERGE)
     private List<Skill> skill;
+    //Relacion uno a uno entre la clase "Persona" y "Red Social".
     @JsonIgnore
     @OneToOne(mappedBy = "persona", cascade = CascadeType.MERGE)
     private RedSocial redes;

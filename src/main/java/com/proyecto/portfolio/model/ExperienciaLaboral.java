@@ -31,6 +31,7 @@ public class ExperienciaLaboral {
     @NotNull
     private String descripcion;
     private String logoEmpresa;
+    //Relacion muchos a uno entre la clase "Experiencia Laboral" y "Persona"
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "persona_id", referencedColumnName = "id")
     private Persona persona;

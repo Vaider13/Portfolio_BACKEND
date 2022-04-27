@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EducacionRepository extends JpaRepository<Educacion, Integer> {
-
+    
+    //Busca los estudios por medio del ID de una persona.
     List<Educacion> findByPersonaId(Integer personaId);
 }

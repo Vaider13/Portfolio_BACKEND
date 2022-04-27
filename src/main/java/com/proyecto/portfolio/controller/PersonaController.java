@@ -39,6 +39,7 @@ public class PersonaController {
     @Autowired
     UsuarioService userService;
 
+    //Se traen todas las personas almacenadas.
     @GetMapping("/traer")
     public ResponseEntity<List<Persona>> getPersonas() {
         List<Persona> perso = interPerso.getPersonas();
@@ -46,18 +47,22 @@ public class PersonaController {
 
     }
 
+    //se trae a la persona por medio de su ID.
     @GetMapping("/traer/{id}")
     public ResponseEntity<Persona> getPersonaById(@PathVariable(name = "id") Integer id) {
         Persona perso = interPerso.findPersona(id);
         return new ResponseEntity(persoMapper.map(perso), HttpStatus.OK);
     }
     
+    //Se trae a una persona correspondiente, por medio del ID asociado al usuario correspondiente.
     @GetMapping("/traer/usuario/{id}")
     public ResponseEntity<Persona> getByUserId(@PathVariable(name = "id") Integer id) {
         Persona perso = interPerso.findPersonaByUserId(id);
         return new ResponseEntity(persoMapper.map(perso), HttpStatus.OK);
     }
 
+    //Se crea una nueva persona, que debe estar enlazada a un usuario, por medio del usuarioID.
+    //Se crea un nuebo objeto, se le asignan los valores, provenientes del cuerpo de la solicitud y posteriormente se guardan.
     @PostMapping("/crear/{userId}")
     public void crearPersona(@PathVariable(name = "userId") Integer userId,
             @RequestBody PersonaDto personaDto) {
@@ -77,11 +82,14 @@ public class PersonaController {
         interPerso.savePersona(persona);
     }
 
+    //Se borra una persona por medio de su ID.
     @DeleteMapping("/borrar/{id}")
     public void borrarPersona(@PathVariable Integer id) {
         interPerso.deletePersona(id);
     }
 
+    //Se edita una persona por medio de su ID. Se trae la persona por medio de su ID.
+    //Luego se le asignan los nuevos valores, que vienen en el cuerpo de la solicitud, y posteriormente se guarda.
     @PutMapping("/editar/{id}")
     public Persona editPersona(@PathVariable Integer id,
              @RequestBody PersonaDto personaDto){

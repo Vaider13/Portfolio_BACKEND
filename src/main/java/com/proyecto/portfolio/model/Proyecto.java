@@ -32,9 +32,11 @@ public class Proyecto {
     private String descripcion; 
     @NotNull
     private String urlProyecto;
+    //Relacion muchos a uno entre la clase "Proyecto" y "Persona"
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "persona_id", referencedColumnName = "id")
     private Persona persona;
+    //Relacion uno a muchos entre la clase "Proyecto" y "Proyecto Imagen".
     @JsonIgnore
     @OneToMany(mappedBy = "proyecto", cascade = CascadeType.MERGE)
     private List<ProyectoImagen> proyectoImagen;

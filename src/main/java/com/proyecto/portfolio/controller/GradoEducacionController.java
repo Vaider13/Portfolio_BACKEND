@@ -19,6 +19,8 @@ public class GradoEducacionController {
     @Autowired
     IGradoService iGradoService;
 
+    //Trae todos los grados que puede poseer un estudio (Secundario, Terciario, Universitario, Posgrado, Doctorado, Curso) 
+    //que se usaran en el correspondiente formulario.
     @GetMapping("/traer")
     public ResponseEntity<List<GradoEducacion>> getEducacion() {
         List<GradoEducacion> list = iGradoService.getGradoEducacion();

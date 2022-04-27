@@ -8,5 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProyectoImagenRepository extends JpaRepository<ProyectoImagen, Integer> {
+    
+    //Trae todas las URL de las imagenes pertenecientes a un proyecto por medio de su ID.
     List<ProyectoImagen>findByProyectoId(Integer proyectoId);
 }

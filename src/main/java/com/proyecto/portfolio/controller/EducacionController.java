@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 @RequestMapping("educacion")
 @CrossOrigin(origins = "*")
@@ -44,24 +45,29 @@ public class EducacionController {
     @Autowired
     IGradoService iGradoEdu;
 
+    //Trae todos los estudios almacenados.
     @GetMapping("/traer")
     public ResponseEntity<List<Educacion>>getEducacion() {
         List<Educacion> list = iEduService.getEducacion();
         return new ResponseEntity(eduMapper.map(list), HttpStatus.OK);
     }
     
+    //Trae un estudio por medio de su ID.
     @GetMapping("/traerid/{id}")
     public ResponseEntity<Educacion>getEducacionById(@PathVariable(name = "id") Integer id) {
         Educacion edu = iEduService.findEducacion(id);
         return new ResponseEntity(eduMapper.map(edu), HttpStatus.OK);
     }
-
+    
+    //Trae los estudios de una persona por medio del ID de la persona.
     @GetMapping("/traer/{personaId}")
     public List<EducacionDto> getEducacionByPersonaId(@PathVariable(name = "personaId") Integer personaId) {
         List<Educacion> listaEducacion = iEduService.getEducacionByPersonaId(personaId);
         return eduMapper.map(listaEducacion);
     }
 
+    //Crea un nuevo estudio, para ello se usa el ID de la parsona para identificar a que persona corresponde.
+    //Se crea un nuevo objeto, se le asignan los valores, que vienen en el cuerpo de la solicitud, y posteriormente se guarda.    
     @PostMapping("/crear/{personaId}")
     public void crearEducacion(@PathVariable(value = "personaId") Integer personaId,
             @RequestBody EducacionDto educacionDto) {
@@ -79,12 +85,15 @@ public class EducacionController {
         edu.setLogoEducacion(educacionDto.getLogoEducacion());
         iEduService.saveEducacion(edu);
     }
-
+    
+    //Borra un estudio por medio del ID.
     @DeleteMapping("/borrar/{id}")
     public void borrarEducacion(@PathVariable Integer id) {
         iEduService.deleteEducacion(id);
     }
 
+    //Se edita un estudio por medio de su ID. Se trae el estudio por medio de su ID.
+    //Luego se le asignan los nuevos valores, que vienen en el cuerpo de la solicitud, y posteriormente se guarda.
     @PutMapping("/editar/{id}")
     public Educacion editEducacion(@PathVariable Integer id,
             @RequestBody EducacionDto educacionDto) {

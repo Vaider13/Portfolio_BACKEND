@@ -6,6 +6,7 @@ import java.util.List;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 
+//Se mapea los atributos de la clase "Localidad" a la clase "LocalidadDTO".
 @Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.FIELD)
 public interface LocalidadMapper {
 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProyectoRepository extends JpaRepository<Proyecto, Integer> {
 
+    //Trae todos los proyectos pertenecientes a una persona por medio del ID de la misma.
     List<Proyecto> findByPersonaId(Integer personaId);
 
 }

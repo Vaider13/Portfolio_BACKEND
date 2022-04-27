@@ -31,12 +31,16 @@ public class Educacion {
     private String fechaInicio;
     private String fechaFinal;
     private String logoEducacion;
+    
+    //Relacion muchos a uno entre la clase "Educacion" y "Persona"
     @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.MERGE )
     @JoinColumn(name = "persona_id", referencedColumnName = "id")
     private Persona persona;
+    //Relacion muchos a uno entre la clase "Educacion" y "Grado Educacion"
     @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.MERGE )
     @JoinColumn(name = "grado_id", referencedColumnName = "id")
     private GradoEducacion gradoEducacion;
+    //Relacion muchos a uno entre la clase "Educacion" y "Estado Educacion"
     @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.MERGE )
     @JoinColumn(name = "estado_id", referencedColumnName = "id")
     private EstadoEducacion estadoEducacion;

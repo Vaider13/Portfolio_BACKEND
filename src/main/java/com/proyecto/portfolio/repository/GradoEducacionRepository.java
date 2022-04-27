@@ -7,5 +7,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GradoEducacionRepository extends JpaRepository<GradoEducacion, Integer> {
+    
+    //Busca un grado de educacion por medio del atributo grado
+    //(Secundario, Terciario, Universitario, Posgrado, Doctorado, Curso).
     GradoEducacion findByGrado(String grado);
 }

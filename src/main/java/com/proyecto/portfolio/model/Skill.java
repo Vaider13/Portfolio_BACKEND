@@ -27,6 +27,7 @@ public class Skill {
     private String tipoSkill;
     @NotNull
     private Integer nivelSkill;
+    //Relacion muchos a uno entre la clase "Skill" y "Persona"
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "persona_id", referencedColumnName = "id")
     private Persona persona;

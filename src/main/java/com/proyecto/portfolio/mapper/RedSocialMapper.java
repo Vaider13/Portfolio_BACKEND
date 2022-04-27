@@ -6,6 +6,7 @@ import java.util.List;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 
+//Se mapea los atributos de la clase "Red Social" a la clase "Red SocialDTO".
 @Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.FIELD)
 public interface RedSocialMapper {
 

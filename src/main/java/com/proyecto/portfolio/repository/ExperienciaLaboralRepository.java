@@ -8,5 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ExperienciaLaboralRepository extends JpaRepository<ExperienciaLaboral, Integer>{
+    
+    //Busca las experiencias laborales de una persona por medio de su ID.
     List<ExperienciaLaboral> findByPersonaId(Integer personaId);
 }

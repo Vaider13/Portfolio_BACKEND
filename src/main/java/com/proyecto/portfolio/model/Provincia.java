@@ -24,6 +24,7 @@ public class Provincia {
     @NotNull
     private String provincia;
     @JsonIgnore
+    //Relacion uno a muchos entre la clase "Provincia" y "Localidad".
     @OneToMany(mappedBy = "provincia" , cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private List<Localidad> localidades;
  

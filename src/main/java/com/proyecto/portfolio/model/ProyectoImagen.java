@@ -20,6 +20,7 @@ public class ProyectoImagen {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    //Relacion muchos a uno entre la clase "Proyecto Imagen" y "Proyecto"
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "proyecto_id", referencedColumnName = "id")
     private Proyecto proyecto;

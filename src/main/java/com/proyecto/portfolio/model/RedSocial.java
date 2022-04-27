@@ -24,6 +24,7 @@ public class RedSocial {
     private String twitter;
     private String instagram;
     private String linkedin;
+    //Relacion uno a uno entre la clase "Red Social" y "Persona"
     @OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "persona_id")
     private Persona persona;

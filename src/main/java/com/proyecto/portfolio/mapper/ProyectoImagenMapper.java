@@ -7,6 +7,7 @@ import java.util.List;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 
+//Se mapea los atributos de la clase "Proyecto Imagen" a la clase "Proyecto ImagenDTO".
 @Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.FIELD)
 public interface ProyectoImagenMapper {
     List<ProyectoImagenDto> map(List<ProyectoImagen> proyectoImagen);

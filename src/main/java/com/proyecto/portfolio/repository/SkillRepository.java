@@ -8,7 +8,11 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SkillRepository extends JpaRepository<Skill, Integer>{
+   
+    //Trae las Skill por medio del tipo de Skill (Hard O Soft)
     List<Skill>findByTipoSkill(String tipoSkill);
+    
+    //Trae todas las skill asociadas a una persona por medio del ID de la misma.
     List<Skill>findByPersonaId(Integer personaId);
     
 }

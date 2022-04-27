@@ -21,12 +21,14 @@ public class ProvinciaController {
     @Autowired
     IProvinciaService iProvinciaService;
     
+    //Trae todas las provincias.
     @GetMapping("/traer")
     public ResponseEntity<List<Provincia>> getProvincia() {
         List<Provincia> list = iProvinciaService.getProvincia();
         return new ResponseEntity(list, HttpStatus.OK);
     }
     
+    //Busca una provincia por medio del nombre de la misma.
     @GetMapping("/traer/{provincia}")
     public ResponseEntity<Provincia> getProvinciaByProvinciaName(@PathVariable(name = "provincia") String provincia) {
         Provincia pro = iProvinciaService.findByName(provincia);

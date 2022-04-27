@@ -34,24 +34,29 @@ public class ExperienciaLaboralController {
     @Autowired
     IExperienciaLaboral iExpService;
 
+    //Trae todas las experiencias laborales.
     @GetMapping("/traer")
     public ResponseEntity<List<ExperienciaLaboral>> getExperienciaLaboral() {
         List<ExperienciaLaboral> list = iExpService.getExperienciaLaboral();
         return new ResponseEntity(expMapper.map(list), HttpStatus.OK);
     }
 
+    //Trae las experiencias laborales de una persona por medio del ID de la persona.
     @GetMapping("/traer/{personaId}")
     public ResponseEntity<List<ExperienciaLaboral>> getExperienciaLaboralByPersonaId(@PathVariable(value = "personaId") Integer personaId) {
         List<ExperienciaLaboral> list = iExpService.getExperienciaLaboralByPersonaId(personaId);
         return new ResponseEntity(expMapper.map(list), HttpStatus.OK);
     }
 
+    //Trae una experiencia laboral por medio de su ID.
     @GetMapping("/traerid/{id}")
     public ResponseEntity<ExperienciaLaboral> getExperienciaLaboralById(@PathVariable Integer id) {
         ExperienciaLaboral exp = iExpService.findExperienciaLaboral(id);
         return new ResponseEntity(expMapper.map(exp), HttpStatus.OK);
     }
 
+    //Crea una nueva experiencia laboral, para ello se usa el ID de la parsona para identificar a que persona corresponde.
+    //Se crea un nuevo objeto, se le asignan los valores, que vienen en el cuerpo de la solicitud, y posteriormente se guarda.  
     @PostMapping("/crear/{personaId}")
     public void crearExperienciaLaboral(@PathVariable(value = "personaId") Integer personaId,
             @RequestBody ExperienciaLaboralDto expDto) {
@@ -67,12 +72,15 @@ public class ExperienciaLaboralController {
         exp.setLogoEmpresa(expDto.getLogoEmpresa());
         iExpService.saveExperienciaLaboral(exp);
     }
-
+    
+    //Borra una experiencia laboral por medio del ID.
     @DeleteMapping("/borrar/{id}")
     public void deleteById(@PathVariable Integer id) {
         iExpService.deleteExperienciaLaboral(id);
     }
 
+    //Se edita una experiencia laboral por medio de su ID. Se trae la experiencia laboral por medio de su ID.
+    //Luego se le asignan los nuevos valores, que vienen en el cuerpo de la solicitud, y posteriormente se guarda.
     @PutMapping("/editar/{id}")
     public ExperienciaLaboral editExperienciaLaboral(@PathVariable Integer id,
             @RequestBody ExperienciaLaboralDto expDto) {

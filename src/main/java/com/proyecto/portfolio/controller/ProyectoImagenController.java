@@ -34,18 +34,21 @@ public class ProyectoImagenController {
     @Autowired
     IProyectoService iProyectService;
     
+    //Se traen todas las URL de las imagenes de cada uno de los proyectos almacenados.
     @GetMapping("/traer")
     public ResponseEntity<List<ProyectoImagen>>getProyectoImagenes() {
         List<ProyectoImagen> list = iProyectImgService.getProyectoImagenes();
         return new ResponseEntity(proyectImgMapper.map(list), HttpStatus.OK);
     }
     
+    //Trae las URL de las imagenes pertenecientes a un proyecto por medio del ID del mismo.
     @GetMapping("/traer/{proyectoId}")
     public ResponseEntity<List<ProyectoImagen>>getProyectoImagenesByProyectoId(@PathVariable (value = "proyectoId") Integer proyectoId) {
         List<ProyectoImagen> list = iProyectImgService.getProyectoImagenesByProyectoId(proyectoId);
         return new ResponseEntity(proyectImgMapper.map(list), HttpStatus.OK);
     }
     
+    //Se almacena una nueva URL de una imagen por medio del ID de un proyecto.
     @PostMapping("/crear/{proyectoId}")
     public void saveProyectoImagen(@PathVariable(value = "proyectoId") Integer proyectoId,
             @RequestBody ProyectoImagenDto proyectImgDto) {
@@ -56,6 +59,7 @@ public class ProyectoImagenController {
         iProyectImgService.saveProyectoImagen(proyectImg);
     }
     
+    //Se borra la URL de una imahen por medio de su ProyectoImagenDto.
     @DeleteMapping("/borrar/{id}")
     public void deleteProyectoImagenById(@PathVariable(value = "id") Integer id) {
         iProyectImgService.deleteById(id);

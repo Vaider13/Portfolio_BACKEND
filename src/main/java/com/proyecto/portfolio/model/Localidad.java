@@ -26,10 +26,12 @@ public class Localidad {
     private Integer id;
     @NotNull
     private String localidad;
+    //Relacion muchos a uno entre la clase "Localidad" y "Provincia"
     @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.MERGE )
     @JoinColumn(name = "provincia_id")
     private Provincia provincia;
     @JsonIgnore
+    //Relacion uno a muchos entre la clase "Localidad" y "Persona".
     @OneToMany(mappedBy = "localidad", fetch = FetchType.EAGER, cascade=CascadeType.MERGE )
     private List<Persona> personas;  
 }

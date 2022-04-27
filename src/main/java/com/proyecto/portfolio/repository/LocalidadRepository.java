@@ -8,6 +8,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LocalidadRepository extends JpaRepository <Localidad, Integer> {
+    
+    //Busca una localidad por medio de su nombre.
     Localidad findByLocalidad(String localidad);
+    
+    //busca una localidad por medio del ID de una provincia.
     List<Localidad>findByProvinciaId(Integer provinciaId);
 }

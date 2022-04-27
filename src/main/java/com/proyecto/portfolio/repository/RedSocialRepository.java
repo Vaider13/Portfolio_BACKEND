@@ -7,5 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RedSocialRepository extends JpaRepository<RedSocial, Integer>{
+    
+    //Trae las redes sociales pertenecientes a una persona por medio del ID de la misma.
     RedSocial findByPersonaId(Integer personaId);
 }

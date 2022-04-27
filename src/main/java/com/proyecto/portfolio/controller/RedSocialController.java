@@ -31,13 +31,15 @@ public class RedSocialController {
 
     @Autowired
     RedSocialMapper redSocialMapper;
-
+    
+    //Trae la URL de las redes sociales asociadas a una persona, por medio de su ID.
     @GetMapping("/traer/{personaId}")
     public ResponseEntity<RedSocial> getByPersonaId(@PathVariable(value = "personaId") Integer personaId) {
         RedSocial redSocial = iRedSocialService.getByPersonaId(personaId);
         return new ResponseEntity(redSocialMapper.map(redSocial), HttpStatus.OK);
     }
-
+    
+    //Se almacena la URL de una red social, por medio del ID de una persona. 
     @PostMapping("/crear/{personaId}")
     public void saveRedSocial(@PathVariable(value = "personaId") Integer personaId,
             @RequestBody RedSocialDto redSocialDto) {
@@ -51,6 +53,8 @@ public class RedSocialController {
         iRedSocialService.saveRedSocial(redSocial);
     }
 
+    //Se edita las URL de las redes sociales, pertenecientes a una persona, por medio del ID de la misma. 
+    //Se le asignan los nuevos valores, que vienen en el cuerpo de la solicitud, y posteriormente se guarda.
     @PutMapping("/editar/{personaId}")
     public RedSocial editRedSocial(@PathVariable(value = "personaId") Integer personaId,
             @RequestBody RedSocialDto redSocialDto) {

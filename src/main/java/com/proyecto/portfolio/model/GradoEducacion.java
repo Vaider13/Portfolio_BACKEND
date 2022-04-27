@@ -24,6 +24,7 @@ public class GradoEducacion {
     @NotNull
     private String grado;
     @JsonIgnore
+    //Relacion uno a muchos entre la clase "Educacion" y "Grado Educacion".
     @OneToMany(mappedBy = "gradoEducacion")
     private List<Educacion> educaciones;
 }

@@ -32,18 +32,22 @@ public class LocalidadController {
     @Autowired
     LocalidadMapper localMapper;
     
+    //Trae todas las localidades almacenadas.
     @GetMapping("/traer")
     public ResponseEntity<List<Localidad>> getLocalidad() {
         List<Localidad> list = iLocalidadService.getLocalidad();
         return new ResponseEntity(localMapper.map(list), HttpStatus.OK);        
     }
     
+    //Trae todas las localidades pertenecientes a una provincia, por medio del ID de la misma.
     @GetMapping("/traer/{provinciaId}")
     public ResponseEntity<List<Localidad>> getLocalidadByProvinciaId(@PathVariable(name = "provinciaId") Integer provinciaId) {
         List<Localidad> list = iLocalidadService.findByProvinciaId(provinciaId);
         return new ResponseEntity(localMapper.map(list), HttpStatus.OK);        
     }
     
+    //Crea una nueva localidad, para ellos se crea un nuevo objeto, lo cual se le asignan los valores, que provienen
+    // del cuerpo de la solicitud, se le asigna el objeto de la provincia correspondiente, y posteriormente se guarda.
     @PostMapping("/crear")
     public void crearLocalidad(@RequestBody LocalidadDto localidadDto) {
         Localidad localidad = new Localidad();
