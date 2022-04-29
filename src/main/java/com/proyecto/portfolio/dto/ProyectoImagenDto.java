@@ -11,4 +11,5 @@ import lombok.Setter;
 public class ProyectoImagenDto {
     private Integer id;
     private String imagenUrl;
+    private Integer proyectoId;
 }

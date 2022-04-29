@@ -16,6 +16,7 @@ public interface ProyectoImagenMapper {
         ProyectoImagenDto proyectImgDto = new ProyectoImagenDto();
         proyectImgDto.setId(proyectImg.getId());
         proyectImgDto.setImagenUrl(proyectImg.getImagenUrl());
+        proyectImgDto.setProyectoId(proyectImg.getProyecto().getId());
         return proyectImgDto;
     }
 }
