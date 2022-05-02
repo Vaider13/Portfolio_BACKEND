@@ -1,5 +1,7 @@
+package com.proyecto.portfolio.dto;
 
-package com.proyecto.portfolio.model;
+
+
 
 import lombok.Data;
 import lombok.Getter;

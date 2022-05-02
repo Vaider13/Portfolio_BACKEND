@@ -38,7 +38,7 @@ public class Proyecto {
     private Persona persona;
     //Relacion uno a muchos entre la clase "Proyecto" y "Proyecto Imagen".
     @JsonIgnore
-    @OneToMany(mappedBy = "proyecto", cascade = CascadeType.MERGE)
+    @OneToMany(mappedBy = "proyecto", cascade = CascadeType.MERGE, orphanRemoval = true)
     private List<ProyectoImagen> proyectoImagen;
 
     public Proyecto() {
