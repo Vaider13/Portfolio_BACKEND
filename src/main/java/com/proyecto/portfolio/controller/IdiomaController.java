@@ -35,23 +35,17 @@ public class IdiomaController {
         return new ResponseEntity(idiomaMap.map(list), HttpStatus.OK);
     }
     
-    @GetMapping("/traeruno/{id}")
+    @GetMapping("/traerid/{id}")
     public ResponseEntity<Idioma> getIdiomaById(@PathVariable(name
             = "id") Integer id) {
         Idioma idioma = iIdiomaService.getIdiomaById(id);
         return new ResponseEntity(idiomaMap.map(idioma), HttpStatus.OK);
     }
     
-    @PostMapping("/crear/")
+    @PostMapping("/crear")
     public void saveIdioma(@RequestBody IdiomaDto idiomaDto) {
         Idioma idioma = new Idioma();
         idioma.setNombreIdioma(idiomaDto.getNombreIdioma());
         iIdiomaService.saveIdioma(idioma);
-    }
-    
-    @DeleteMapping("/borrar/{id}")
-     public void deleteIdiomaById(@PathVariable(name
-            = "id") Integer id) {
-        iIdiomaService.deleteIdiomaById(id);
     }
 }

@@ -45,7 +45,7 @@ public class ExperienciaIdiomaController {
         return new ResponseEntity(expIdiomaMapper.map(list), HttpStatus.OK);
     }
     
-    @GetMapping("/traeruno/{id}")
+    @GetMapping("/traerid/{id}")
     public ResponseEntity<ExperienciaIdioma> getExperienciaIdiomaById(@PathVariable(name
             = "id") Integer id) {
         ExperienciaIdioma exp = iExperienciaIdioma.getExperienciaIdiomaById(id);
@@ -81,16 +81,17 @@ public class ExperienciaIdiomaController {
     }
     
     @PutMapping("/editar/{id}")
-    public void editExperienciaIdiomaByPersonaId(@PathVariable(name
+    public  ExperienciaIdioma editExperienciaIdiomaByPersonaId(@PathVariable(name
             = "id") Integer id,
             @RequestBody ExperienciaIdiomaDto expDto) {
-        ExperienciaIdioma expIdioma = new ExperienciaIdioma();
+        ExperienciaIdioma expIdioma = iExperienciaIdioma.getExperienciaIdiomaById(id);
         Idioma idioma = iIdiomaService.getByIdioma(expDto.getNombreIdioma());
         expIdioma.setIdioma(idioma);
         expIdioma.setOral(expDto.getOral());
         expIdioma.setEscritura(expDto.getEscritura());
         expIdioma.setLectura(expDto.getLectura());
         iExperienciaIdioma.saveExperienciaIdioma(expIdioma);
+        return expIdioma;
     }
     
 
