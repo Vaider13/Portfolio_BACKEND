@@ -7,9 +7,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Data
-public class GradoEducacionDto {
+public class IdiomaDto {
 
     private Integer id;
-    private String grado;
-
+    private String NombreIdioma;
 }

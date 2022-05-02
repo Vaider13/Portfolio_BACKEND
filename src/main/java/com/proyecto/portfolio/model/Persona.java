@@ -67,6 +67,10 @@ public class Persona {
     @JsonIgnore
     @OneToOne(mappedBy = "persona", cascade = CascadeType.MERGE)
     private RedSocial redes;
+     //Relacion uno a uno entre la clase "Persona" y "Experiencia Idioma".
+    @JsonIgnore
+    @OneToMany(mappedBy = "persona", cascade = CascadeType.MERGE)
+    private List<ExperienciaIdioma> experienciaIdioma;
 
     public Persona() {
     }
