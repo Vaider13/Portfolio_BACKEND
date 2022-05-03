@@ -32,6 +32,7 @@ public class Proyecto {
     private String descripcion; 
     @NotNull
     private String urlProyecto;
+    private String urlProyectoGitHub;
     //Relacion muchos a uno entre la clase "Proyecto" y "Persona"
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "persona_id", referencedColumnName = "id")

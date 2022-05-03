@@ -18,6 +18,7 @@ public interface ProyectoMapper {
         proyectDto.setFecha(proyect.getFecha());
         proyectDto.setDescripcion(proyect.getDescripcion());
         proyectDto.setUrlProyecto(proyect.getUrlProyecto());
+        proyectDto.setUrlProyectoGitHub(proyect.getUrlProyectoGitHub());
         return proyectDto;
     }
 }

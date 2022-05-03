@@ -15,5 +15,6 @@ public class ProyectoDto {
     private String fecha;
     private String descripcion;
     private String urlProyecto;
+    private String urlProyectoGitHub;
 }
 

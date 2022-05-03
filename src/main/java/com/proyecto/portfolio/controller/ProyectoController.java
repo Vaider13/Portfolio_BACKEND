@@ -24,38 +24,38 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("proyecto")
 @CrossOrigin(origins = "*")
 public class ProyectoController {
-    
+
     @Autowired
     IProyectoService proyectService;
-    
+
     @Autowired
     ProyectoMapper proyectMapper;
-    
+
     @Autowired
     IPersonaService persoService;
-    
+
     //Trae todos los proyectos almacenados.
     @GetMapping("/traer")
     public ResponseEntity<List<Proyecto>> getProyectos() {
         List<Proyecto> list = proyectService.getProyectos();
         return new ResponseEntity(proyectMapper.map(list), HttpStatus.OK);
     }
-    
+
     //Trae los proyectos de una persona por medio del ID de la persona.
     @GetMapping("/traer/{personaId}")
     public ResponseEntity<List<Proyecto>> getExperienciaLaboralByPersonaId(@PathVariable(value = "personaId") Integer personaId) {
         List<Proyecto> list = proyectService.getProyectosByPersonaId(personaId);
         return new ResponseEntity(proyectMapper.map(list), HttpStatus.OK);
     }
-    
-     //Trae un proyecto por medio de su ID.
+
+    //Trae un proyecto por medio de su ID.
     @GetMapping("/traerid/{id}")
     public ResponseEntity<Proyecto> getProyectoById(@PathVariable(value = "id") Integer id) {
         Proyecto proyect = proyectService.findProyecto(id);
         return new ResponseEntity(proyectMapper.map(proyect), HttpStatus.OK);
-        
+
     }
-    
+
     //Crea un nuevo proyecto, para ello se usa el ID de la parsona para identificar a que persona corresponde.
     //Se crea un nuevo objeto, se le asignan los valores, que vienen en el cuerpo de la solicitud, y posteriormente se guarda.    
     @PostMapping("/crear/{personaId}")
@@ -67,16 +67,17 @@ public class ProyectoController {
         proyect.setFecha(proyectDto.getFecha());
         proyect.setDescripcion(proyectDto.getDescripcion());
         proyect.setUrlProyecto(proyectDto.getUrlProyecto());
+        proyect.setUrlProyectoGitHub(proyectDto.getUrlProyectoGitHub());
         proyect.setPersona(perso);
         proyectService.saveProyecto(proyect);
     }
-    
+
     //Borra un estudio por medio del ID.
     @DeleteMapping("/borrar/{id}")
     public void borrarProyecto(@PathVariable(value = "id") Integer id) {
         proyectService.deleteProyecto(id);
     }
-    
+
     //Se edita un proyecto por medio de su ID. Se trae el proyecto por medio de su ID.
     //Luego se le asignan los nuevos valores, que vienen en el cuerpo de la solicitud, y posteriormente se guarda.
     @PutMapping("/editar/{id}")
@@ -87,6 +88,7 @@ public class ProyectoController {
         proyect.setFecha(proyectDto.getFecha());
         proyect.setDescripcion(proyectDto.getDescripcion());
         proyect.setUrlProyecto(proyectDto.getUrlProyecto());
+        proyect.setUrlProyectoGitHub(proyectDto.getUrlProyectoGitHub());
         proyectService.saveProyecto(proyect);
         return proyect;
     }
