@@ -39,19 +39,22 @@ public class ExperienciaIdiomaController {
     @Autowired
     ExperienciaIdiomaMapper expIdiomaMapper;
 
+    //Trae la lista de todos los niveles de idiomas
     @GetMapping("/traer")
     public ResponseEntity<List<ExperienciaIdioma>> getExperienciaIdiomas() {
         List<ExperienciaIdioma> list = iExperienciaIdioma.getExperienciaIdioma();
         return new ResponseEntity(expIdiomaMapper.map(list), HttpStatus.OK);
     }
     
+    //Trae un solo idioma por medio de su ID.
     @GetMapping("/traerid/{id}")
     public ResponseEntity<ExperienciaIdioma> getExperienciaIdiomaById(@PathVariable(name
             = "id") Integer id) {
         ExperienciaIdioma exp = iExperienciaIdioma.getExperienciaIdiomaById(id);
         return new ResponseEntity(expIdiomaMapper.map(exp), HttpStatus.OK);
     }
-
+    
+    //Trae la lista de idiomas pertenecientes a una persona por medio de su ID
     @GetMapping("/traer/{personaId}")
     public ResponseEntity<List<ExperienciaIdioma>> getExperienciaIdiomasByPersonaId(@PathVariable(name
             = "personaId") Integer personaId) {
@@ -59,6 +62,7 @@ public class ExperienciaIdiomaController {
         return new ResponseEntity(expIdiomaMapper.map(list), HttpStatus.OK);
     }
     
+    //Se agrega un idioma perteneciente a una persona por medio del ID de la misma.
     @PostMapping("/crear/{personaId}")
     public void saveExperienciaIdiomaByPersonaId(@PathVariable(name
             = "personaId") Integer personaId,
@@ -74,12 +78,14 @@ public class ExperienciaIdiomaController {
         iExperienciaIdioma.saveExperienciaIdioma(expIdioma);
     }
     
+    //Se borra un idioma por medio de su ID.
     @DeleteMapping("/borrar/{id}")
     public void deleteExperienciaIdiomaById(@PathVariable(name
             = "id") Integer id) {
         iExperienciaIdioma.deleteById(id);
     }
     
+    //Se edita un idioma por medio de su ID.
     @PutMapping("/editar/{id}")
     public  ExperienciaIdioma editExperienciaIdiomaByPersonaId(@PathVariable(name
             = "id") Integer id,

@@ -29,12 +29,14 @@ public class IdiomaController {
     @Autowired
     IdiomaMapper idiomaMap;
     
+    //Trae la lista de idiomas
     @GetMapping("/traer")
     public ResponseEntity<List<Idioma>> getIdiomas() {
         List<Idioma> list = iIdiomaService.getIdiomas();
         return new ResponseEntity(idiomaMap.map(list), HttpStatus.OK);
     }
     
+    //Trae un idioma por medio de su ID
     @GetMapping("/traerid/{id}")
     public ResponseEntity<Idioma> getIdiomaById(@PathVariable(name
             = "id") Integer id) {
@@ -42,6 +44,7 @@ public class IdiomaController {
         return new ResponseEntity(idiomaMap.map(idioma), HttpStatus.OK);
     }
     
+    //Permite crear un nuevo idioma.
     @PostMapping("/crear")
     public void saveIdioma(@RequestBody IdiomaDto idiomaDto) {
         Idioma idioma = new Idioma();
