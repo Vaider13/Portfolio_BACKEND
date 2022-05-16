@@ -94,6 +94,7 @@ public class PersonaController {
     public Persona editPersona(@PathVariable Integer id,
              @RequestBody PersonaDto personaDto){
         Persona perso = interPerso.findPersona(id);
+        Localidad localidad = localService.findByName(personaDto.getLocalidad());
         perso.setApellido(personaDto.getApellido());
         perso.setNombre(personaDto.getNombre());
         perso.setFecha_nacimiento(personaDto.getFecha_nacimiento());
@@ -102,7 +103,7 @@ public class PersonaController {
         perso.setAcerca_de(personaDto.getAcerca_de());
         perso.setUrlAvatar(personaDto.getUrlAvatar());
         perso.setUrlBanner(personaDto.getUrlBanner());
-        perso.setLocalidad(localService.findByName(personaDto.getLocalidad()));
+        perso.setLocalidad(localidad);
         interPerso.savePersona(perso);
         return perso;
     }
